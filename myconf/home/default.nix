@@ -1,6 +1,12 @@
 { config, pkgs,libs, ... }:
 
 {
+  imports = [
+    ./packages.nix
+    ./git.nix
+    ./tmux.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "iqbalsonata";
@@ -12,72 +18,12 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-
-  # Allow Unfree Packages
+# Allow Unfree Packages
   nixpkgs.config.allowUnfree = true;
 
   # The home.packages option allows you to install Nix packages into your
   #environment.
-  home.packages = with pkgs; [ 
-    bat
-    nodejs
-    gdb
-    lldb
-    clang
-    file
-    teams-for-linux
-    nodePackages_latest.prettier
-    papirus-icon-theme
-    sqlite
-    multimarkdown
-    vimPlugins.nvim-treesitter-parsers.markdown
-    clang-tools
-    dbeaver-bin
-    vimPlugins.null-ls-nvim
-    gnumake
-    gopls
-    php83
-    sqls
-    nodePackages_latest."@tailwindcss/language-server"
-    nodePackages_latest."diagnostic-languageserver"
-    nodePackages_latest.typescript-language-server
-    vimPlugins.nvim-treesitter-parsers.typescript
-    nodePackages.vscode-langservers-extracted
-    vimPlugins.nvim-treesitter-parsers.angular
-    bash-language-server
-    flatpak
-    tflint
-    google-cloud-sdk
-    terraform
-    wireshark
-    gofumpt 
-    stylua
-    gotools
-    google-chrome
-    docker-compose
-    ripgrep
-    firefox
-    discord
-    spotify
-    ulauncher
-    libreoffice
-    drawio
-    go
-    lld
-    zls
-    zig
-    docker
-    man
-    typescript
-    man-pages
-    wget
-    neofetch
-    eza
-    htop
-    glibc
-    fragments
-  ];
-    # # "Hello, world!" when run.
+      # # "Hello, world!" when run.
     # pkgs.hello
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -161,12 +107,12 @@
 
        keymapConfig = pkgs.vimUtils.buildVimPlugin {
         name = "keymap-config";
-        src = config/nvim/keymapconfig;
+        src = ../config/nvim/keymapconfig;
        };       
 
 	     config = pkgs.vimUtils.buildVimPlugin {
 	      name = "config";
-	      src = config/nvim/config;
+	      src = ../config/nvim/config;
 	     };
      in
      with pkgs.vimPlugins; [
@@ -196,27 +142,27 @@
         {
           plugin = config;
           type = "lua";
-          config = builtins.readFile config/nvim/config.lua;
+          config = builtins.readFile ../config/nvim/config.lua;
         }
         {
           plugin = keymapConfig;
           type = "lua";
-          config = builtins.readFile config/nvim/keymap.lua;
+          config = builtins.readFile ../config/nvim/keymap.lua;
         }
         {
           plugin = dracula-vim;
           type= "lua";
-          config = builtins.readFile config/nvim/color.lua;
+          config = builtins.readFile ../config/nvim/color.lua;
         }
         {
           plugin = (pluginGit "stevearc" "profile.nvim" "master" "sha256-usyy1kST8hq/3j0sp7Tpf/1mld6RtcVABPo/ygeqzbU=" );
           type = "lua";
-          config = builtins.readFile config/nvim/profile.lua;
+          config = builtins.readFile ../config/nvim/profile.lua;
         }
         {
           plugin = (pluginGit "ThePrimeagen" "harpoon" "harpoon2" "RjwNUuKQpLkRBX3F9o25Vqvpu3Ah1TCFQ5Dk4jXhsbI=" );
           type = "lua";
-          config = builtins.readFile config/nvim/harpoon.lua;
+          config = builtins.readFile ../config/nvim/harpoon.lua;
         }
 
         {
@@ -226,12 +172,12 @@
 	    ]
 	    ));
       	type = "lua";
-	      config = builtins.readFile config/nvim/treesitter.lua;
+	      config = builtins.readFile ../config/nvim/treesitter.lua;
       }
       {
       	plugin = nvim-lspconfig;
 	      type = "lua";
-	      config = builtins.readFile config/nvim/lsp.lua;
+	      config = builtins.readFile ../config/nvim/lsp.lua;
       }
       {
         plugin = (pluginGit "lvimuser" "lsp-inlayhints.nvim" "master" "0fx0swsagjdng9m9x73wkfqnk464qk63q9wi32rhywllbm7gsflf");
@@ -245,12 +191,12 @@
       {
         plugin = nvim-autopairs;
         type = "lua";
-        config = builtins.readFile config/nvim/autopairs.lua;
+        config = builtins.readFile ../config/nvim/autopairs.lua;
       }
       {
         plugin = indent-blankline-nvim;
         type = "lua";
-        config = builtins.readFile config/nvim/indentline.lua;
+        config = builtins.readFile ../config/nvim/indentline.lua;
       }
       {
         plugin = nvim-colorizer-lua;
@@ -263,24 +209,24 @@
       {
         plugin = telescope-nvim;
         type = "lua";
-        config = builtins.readFile config/nvim/telescope.lua;
+        config = builtins.readFile ../config/nvim/telescope.lua;
       }
       
       {
         plugin = nvim-dap;
         type = "lua";
-        config = builtins.readFile config/nvim/dap.lua;
+        config = builtins.readFile ../config/nvim/dap.lua;
       }
       
       {
         plugin = nvim-tree-lua;
         type = "lua";
-        config = builtins.readFile config/nvim/filetree.lua;
+        config = builtins.readFile ../config/nvim/filetree.lua;
       }
       {
         plugin = lualine-nvim;
         type = "lua";
-        config = builtins.readFile config/nvim/lualine.lua;
+        config = builtins.readFile ../config/nvim/lualine.lua;
       }
       {
         plugin = (pluginGit "numToStr" "Comment.nvim" "master" "h0kPue5Eqd5aeu4VoLH45pF0DmWWo1d8SnLICSQ63zc=");
@@ -289,97 +235,17 @@
       {
         plugin = toggleterm-nvim;
         type = "lua";
-        config = builtins.readFile config/nvim/toggleterm.lua;
+        config = builtins.readFile ../config/nvim/toggleterm.lua;
       }
       {
         plugin = nvim-spectre;
         type = "lua";
-        config = builtins.readFile config/nvim/spectre.lua;
+        config = builtins.readFile ../config/nvim/spectre.lua;
       }
     ];
   };
 
   
-
-  # GIT
-  programs.git = {
-    enable = true;
-    userEmail = "iqbalsonata2@gmail.com";
-    userName = "iqbalsonata";
-    extraConfig = {
-      pull.rebase = true;
-    };
-  };
-  programs.git-credential-oauth.enable = true;
-  
-  # tmux
-  programs.tmux = {
-      enable = true;
-      mouse = true;
-      aggressiveResize = true;
-      baseIndex = 1;
-      newSession = true;
-      shortcut = "f";
-      terminal = "xterm-256color";
-      plugins = with pkgs.tmuxPlugins; [
-        {
-          plugin = dracula;
-          extraConfig = ''
-            set -g @dracula-plugins "git"
-            set -g @dracula-show-left-icon session
-            set -g @dracula-show-fahrenheit false
-          '';
-        }
-        {
-          plugin = resurrect;
-          extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-        }
-        {
-          plugin = continuum;
-          extraConfig = ''
-            set -g @continuum-restore 'off'
-            set -g @continuum-save-interval '5' # minutes
-          '';
-        }
-        {
-          plugin = open;
-        }
-        {
-          plugin = yank;
-          extraConfig = ''
-            set -g @yank_highlight 'true'
-            set -g @yank_highlight_cursor 'true'
-          '';
-        }
-        {
-          plugin = copycat;
-        }
-        {
-         plugin = logging;
-        }
-      ];
-      extraConfig = ''
-        set-option -ga terminal-overrides ",xterm-256color:Tc"
-        
-
-        bind b split-window -h -c "#{pane_current_path}"
-        bind v split-window -v -c "#{pane_current_path}"
-
-        bind r source-file ~/.config/tmux/tmux.conf \: display-message "Loaded tmux config"
-
-        color_status_text="colour245"
-        color_window_off_status_bg="colour238"
-        color_light="white" #colour015
-        color_dark="colour232" # black= colour232
-        color_window_off_status_current_bg="colour254"
-
-        bind -r k select-pane -U
-        bind -r j select-pane -D
-        bind -r h select-pane -R
-        bind -r l select-pane -L
-      '';
-  };
-
   programs.fish  = {
     enable = true;
     shellAbbrs = {
@@ -390,6 +256,5 @@
       fish_indent = "";
     };
   };
-
 
 }

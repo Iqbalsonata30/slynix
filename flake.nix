@@ -22,29 +22,31 @@
 
   };
 
-  outputs = { self,nixpkgs,... }@inputs:
+  outputs = { self,nixpkgs,home-manager,... }@inputs:
     let 
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
-      lib = nixpkgs.lib;
-    in { 
-      inputs.pkgs = pkgs;
-
-      nixOsConfiguration = {
+      inherit (self) outputs;
+      systems = [ "x86_64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs systems; lib = nixpkgs.lib; in { 
+      nixosConfigurations = {
         iqbalsonata = lib.nixosSystem{
-          inherit system;
-
+          specialArgs = { inherit inputs outputs; };
+          system = "x86_64-linux";
           modules = [
-            ./hardware-configuration.nix
+            ./myconf/hosts
           ];
         };
       };
 
+      homeConfigurations = {
+        "nixos@iqbalsonata" = home-manager.lib.homeManagerConfiguration{
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "iqbalsonata";
+          };
+          modules = [./myconf/home/default.nix];
+        };
+      };
     };
       
 
