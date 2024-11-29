@@ -2,9 +2,7 @@
 
 {
   home.packages = with pkgs; [ 
-    bat
-    nodejs
-    gdb
+    bat nodejs gdb
     lldb
     clang
     file

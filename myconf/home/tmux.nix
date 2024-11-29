@@ -10,7 +10,7 @@
     newSession = true;
     shortcut = "f";
     terminal = "xterm-256color";
-    programs.tmux.keyMode = "vi";
+    keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = dracula;

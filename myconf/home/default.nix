@@ -155,7 +155,7 @@
           config = builtins.readFile ../config/nvim/color.lua;
         }
         {
-          plugin = (pluginGit "stevearc" "profile.nvim" "master" "sha256-usyy1kST8hq/3j0sp7Tpf/1mld6RtcVABPo/ygeqzbU=" );
+          plugin = (pluginGit "stevearc" "profile.nvim" "master" "sha256-dRHidtV/M+i/5CkeaJBQ2BMuISmnrAIqm34x7YBkSNU=" );
           type = "lua";
           config = builtins.readFile ../config/nvim/profile.lua;
         }
