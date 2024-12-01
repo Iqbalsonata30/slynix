@@ -21,6 +21,7 @@
     plugins.neo-tree.enable = true;
     plugins.neo-tree.enableGitStatus = true;
     plugins.neo-tree.enableDiagnostics = true;
+    plugins.neo-tree.filesystem.filteredItems.visible = true;
 
     plugins.treesitter = {
       enable = true;
