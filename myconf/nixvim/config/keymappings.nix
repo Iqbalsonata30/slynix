@@ -1,11 +1,10 @@
 {
   globals.mapleader = " ";
+  globals.zig_fmt_autosave = 0;
   keymaps = [
   {
     action = ":lua vim.lsp.buf.definition()<CR>";
-    key = "<leader>gd";
-    options = {
-      silent = true;
+    key = "<leader>gd"; options = { silent = true;
       noremap = true;
       desc = "Go to definition";
     };
@@ -75,6 +74,38 @@
       noremap = true;
     };
   }
+
+
+  {
+    action = ":Lspsaga diagnostic_jump_next<CR>";
+    key = "[d";
+    options = {
+      silent = true;
+      noremap = true;
+    };
+  }
+
+  {
+    action = ":Lspsaga diagnostic_jump_prev<CR>";
+    key = "]d";
+    options = {
+      silent = true;
+      noremap = true;
+    };
+  }
+
+  {
+    action = ":Lspsaga peek_definition<CR>";
+    key = "<C-e>";
+    options = {
+      silent = true;
+      noremap = true;
+    };
+  }
+
+
+
+
   
 
   ];
