@@ -18,6 +18,11 @@
 	      flake = false;
 	  };
 
+
+    nixvim.url  = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.inputs.home-manager.follows = "home-manager";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
 
   };
@@ -26,7 +31,10 @@
     let 
       inherit (self) outputs;
       systems = [ "x86_64-linux" ];
-      forAllSystems = nixpkgs.lib.genAttrs systems; lib = nixpkgs.lib; in { 
+      forAllSystems = nixpkgs.lib.genAttrs systems; 
+      lib = nixpkgs.lib;
+    in { 
+           
       nixosConfigurations = {
         iqbalsonata = lib.nixosSystem{
           specialArgs = { inherit inputs outputs; };
@@ -44,7 +52,10 @@
             inherit inputs outputs;
             hostname = "iqbalsonata";
           };
-          modules = [./myconf/home/default.nix];
+          modules = [
+            ./myconf/home/default.nix
+            inputs.nixvim.homeManagerModules.nixvim
+          ];
         };
       };
     };

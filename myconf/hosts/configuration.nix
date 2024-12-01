@@ -113,16 +113,16 @@
   # programs.mtr.enable = true;
   programs.fish.enable = true;
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    liberation_ttf
-    noto-fonts-emoji
-    fira-code
-    fira-code-symbols
-    nerdfonts
-    dina-font
-    proggyfonts
-   ];
+  # fonts.packages = with pkgs; [
+  #   noto-fonts
+  #   liberation_ttf
+  #   noto-fonts-emoji
+  #   fira-code
+  #   fira-code-symbols
+  #   nerd-fonts
+  #   dina-font
+  #   proggyfonts
+  #  ];
 
 
 
