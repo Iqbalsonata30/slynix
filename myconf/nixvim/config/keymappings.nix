@@ -1,6 +1,5 @@
 {
   globals.mapleader = " ";
-  globals.zig_fmt_autosave = 0;
   keymaps = [
     {
       action = ":lua vim.lsp.buf.definition()<CR>";
@@ -95,6 +94,7 @@
       };
     }
 
+    # Lspsaga Peek Definition
     {
       action = ":Lspsaga peek_definition<CR>";
       key = "<C-e>";
@@ -104,39 +104,57 @@
       };
     }
 
+    # Splits Window
     {
-      action = ":Lspsaga term_toggle<CR>";
-      key = "+";
+      action = ":vsplit<CR><C-w>l";
+      key = "<leader>v";
       options = {
         silent = true;
-        noremap = true;
+      };
+    }
+
+    # Smart Split Move Cursor Left
+    {
+      action = ":lua require('smart-splits').move_cursor_left()<CR>";
+      mode = "n";
+      key = "<C-l>";
+      options.silent = true;
+    }
+
+    # Smart Split Move Cursor Right
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = ":lua require('smart-splits').move_cursor_right()<CR>";
+      options.silent = true;
+    }
+
+    # Smart Split Resize Left
+    {
+      mode = "n";
+      key = "<C-h>";
+      action = ":lua require('smart-splits').resize_left()<CR>";
+      options.silent = true;
+    }
+
+    # Smart Split Resize Left
+    {
+      mode = "n";
+      key = "<C-j>";
+      action = ":lua require('smart-splits').resize_right()<CR>";
+      options.silent = true;
+    }
+
+    # Floatterm Toggle
+    {
+      mode = "n";
+      key = "<c-t>";
+      action = ":FloatermToggle<CR>";
+      options = {
+        silent = true;
+        desc = "Terminal";
       };
     }
   ];
 }
-#
-# -- keymap
-# -- change leader
-# vim.g.mapleader = " "
-# vim.keymap.set("n", "<space", "<nop>", { silent = true })
-#
-#
-# vim.keymap.set("n", "<C-k>", ":resize +2<CR>", { silent = true })
-# vim.keymap.set("n", "<C-j>", ":resize -2<CR>", { silent = true })
-#
-# vim.keymap.set("n", "<C-l>", ":vertical resize +2<CR>", { silent = true })
-# vim.keymap.set("n", "<C-h>", ":vertical resize -2<CR>", { silent = true })
-#
-#
-# -- copy to clipboard
-# vim.keymap.set({ "v", "n" }, "<leader>y", '"+y')
-# vim.keymap.set("n", "<leader>Y", '"+yg_')
-#
-# -- paste to clipbord
-# vim.keymap.set({ "v", "n" }, "<leader>p", '"+p')
-# vim.keymap.set({ "v", "n" }, "<leader>P", '"+P')
-#
-#
-# -- splits
 # vim.keymap.set("n", "<leader>s", ":split<CR><C-w>j", { silent = true })
-# vim.keymap.set("n", "<leader>v", ":vsplit<CR><C-w>l", { silent = true })

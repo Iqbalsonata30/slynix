@@ -1,0 +1,3 @@
+{
+  plugins.floaterm = {enable = true;};
+}

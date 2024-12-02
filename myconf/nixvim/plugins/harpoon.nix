@@ -1,18 +1,25 @@
-{
-  plugins = {
-    harpoon = {
-      enable = true;
-      keymapsSilent = true;
-      keymaps = {
-        addFile = "<leader>a";
-        toggleQuickMenu = "<C-Tab>";
-        navFile = {
-          "1" = "<C-j>";
-          "2" = "<C-k>";
-          "3" = "<C-l>";
-          "4" = "<C-m>";
-        };
-      };
-    };
+{pkgs, ...}: {
+  config = {
+    extraConfigLuaPre = ''
+      local harpoon = require('harpoon2')
+      harpoon:setup({})
+      local conf = require("telescope.config").values
+      local function toggle_telescope(harpoon_files)
+          local file_paths = {}
+          for _, item in ipairs(harpoon_files.items) do
+              table.insert(file_paths, item.value)
+          end
+
+          require("telescope.pickers").new({}, {
+              prompt_title = "Harpoon",
+              finder = require("telescope.finders").new_table({
+                  results = file_paths,
+              }),
+              previewer = conf.file_previewer({}),
+              sorter = conf.generic_sorter({}),
+          }):find()
+      end
+    '';
+    extraPlugins = with pkgs.vimPlugins; [vim-wakatime vim-repeat];
   };
 }

@@ -21,8 +21,6 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.home-manager.follows = "home-manager";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs = {

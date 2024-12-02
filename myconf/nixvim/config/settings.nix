@@ -1,5 +1,52 @@
 {
   config = {
+    highlight = {
+      CursorLine = {
+        fg = "none";
+        bg = "none";
+      };
+      Pmenu = {
+        fg = "none";
+        bg = "#a559ba";
+      };
+      PmenuSbar = {
+        fg = "none";
+        bg = "#a559ba";
+      };
+      PmenuThumb = {
+        fg = "none";
+        bg = "#a559ba";
+      };
+      PmenuSel = {
+        fg = "none";
+        bg = "#20202a";
+      };
+
+      CmpItemAbbrMatch = {
+        fg = "#a9b1d6";
+        bg = "none";
+      };
+      CmpItemAbbrMatchFuzzy = {
+        fg = "#a9b1d6";
+        bg = "none";
+      };
+      CmpItemAbbr = {
+        fg = "#545c7e";
+        bg = "none";
+      };
+      CmpItemKind = {
+        fg = "#9d7cd8";
+        bg = "none";
+      };
+      CmpItemMenu = {
+        fg = "#9d7cd8";
+        bg = "none";
+      };
+      CmpItemKindSnippet = {
+        fg = "#9d7cd8";
+        bg = "none";
+      };
+    };
     extraConfigLuaPre = ''
       vim.fn.sign_define("diagnosticsignerror", { text = " ", texthl = "diagnosticerror", linehl = "", numhl = "" })
       vim.fn.sign_define("diagnosticsignwarn", { text = " ", texthl = "diagnosticwarn", linehl = "", numhl = "" })
@@ -17,7 +64,6 @@
       shiftwidth = 2;
       mouse = "a";
       scrolloff = 12;
-      cursorline = true;
       breakindent = true;
       rnu = true;
       ignorecase = true;
@@ -35,4 +81,3 @@
     };
   };
 }
-

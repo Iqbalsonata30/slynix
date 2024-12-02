@@ -2,7 +2,6 @@
   plugins = {
     lsp = {
       enable = true;
-      inlayHints = true;
       keymaps = {
         silent = true;
         diagnostic = {
@@ -18,7 +17,6 @@
           "<F2>" = "rename";
         };
       };
-
       servers = {
         ccls = {
           enable = true;
@@ -68,6 +66,10 @@
       };
     };
 
+    lsp-lines = {
+      enable = true;
+    };
+
     lspkind = {
       enable = true;
       cmp = {
@@ -82,8 +84,24 @@
           return kind
           end
         '';
+        menu = {
+          buffer = "";
+          calc = "";
+          cmdline = "";
+          codeium = "󱜙";
+          emoji = "󰞅";
+          git = "";
+          luasnip = "󰩫";
+          neorg = "";
+          nvim_lsp = "";
+          nvim_lua = "";
+          path = "";
+          spell = "";
+          treesitter = "󰔱";
+        };
       };
       mode = "symbol_text";
+
       symbolMap = {
         Suggestion = " ";
         Error = "";
@@ -107,18 +125,26 @@
 
     trouble.enable = true;
     lsp-format.enable = true;
-    nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;
 
     cmp-nvim-lsp.enable = true;
+    cmp-nvim-lsp-document-symbol.enable = true;
+    cmp-nvim-lsp-signature-help.enable = true;
     cmp-buffer.enable = true;
+    cmp-emoji.enable = true;
     cmp-path.enable = true;
+    cmp_luasnip.enable = true;
     cmp-treesitter.enable = true;
 
     cmp = {
       enable = true;
       autoEnableSources = true;
       settings = {
+        snippet.expand = ''
+          function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        '';
         sources = [
           {name = "nvim_lsp";}
           {name = "nvim_lsp_signature_help";}
@@ -136,17 +162,17 @@
         };
         window = {
           completion = {
-            winhighlight = "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None";
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None";
             zindex = 1001;
             scrolloff = 0;
-            border = "rounded";
+            border = ["╭" "─" "╮" "│" "╯" "─" "╰" "│"];
             colOffset = 0;
             sidePadding = 1;
             scrollbar = true;
           };
           documentation = {
-            border = "rounded";
-            winhighlight = "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None";
+            border = ["╭" "─" "╮" "│" "╯" "─" "╰" "│"];
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None";
             zindex = 1001;
             maxHeight = 20;
           };
@@ -168,7 +194,6 @@
           #   '';
         };
 
-        snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
         mapping = {
           "<C-u>" = "cmp.mapping.scroll_docs(-4)";
           "<C-d>" = "cmp.mapping.scroll_docs(4)";
@@ -184,6 +209,9 @@
     none-ls = {
       enable = true;
       sources = {
+        code_actions = {
+          gitsigns.enable = true;
+        };
         formatting = {
           prettier.enable = true;
           alejandra.enable = true;

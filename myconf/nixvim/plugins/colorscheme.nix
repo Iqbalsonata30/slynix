@@ -3,8 +3,8 @@
     dracula-nvim = {
       enable = true;
       settings = {
-        style = "dark";
-        transparent = true;
+        theme = "dracula-soft";
+        transparent_bg = true;
         colors = {
           red = "#F865B0";
           blue = "#585191";
