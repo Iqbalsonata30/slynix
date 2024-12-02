@@ -103,6 +103,15 @@
         noremap = true;
       };
     }
+
+    {
+      action = ":Lspsaga term_toggle<CR>";
+      key = "+";
+      options = {
+        silent = true;
+        noremap = true;
+      };
+    }
   ];
 }
 #
