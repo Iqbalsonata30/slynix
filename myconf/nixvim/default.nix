@@ -14,6 +14,7 @@
       ./plugins/dressing.nix
       ./plugins/indent-blankline.nix
       ./plugins/floaterm.nix
+      ./plugins/zig.nix
     ];
 
     enable = true;

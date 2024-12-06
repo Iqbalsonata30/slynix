@@ -23,6 +23,16 @@
           autostart = true;
         };
 
+        ts_ls = {
+          enable = true;
+          autostart = true;
+        };
+
+        tailwindcss = {
+          enable = true;
+          autostart = true;
+        };
+
         gopls = {
           enable = true;
           autostart = true;
@@ -41,7 +51,6 @@
           autostart = true;
           settings.formatting.command = ["nixfmt"];
         };
-
         lua_ls = {
           enable = true;
           autostart = true;
@@ -219,6 +228,7 @@
           goimports.enable = true;
           clang_format.enable = true;
           stylua.enable = true;
+          prettier.disableTsServerFormatter = true;
         };
       };
     };
@@ -235,6 +245,7 @@
           lua = ["stylua"];
           markdown = ["prettier"];
           nix = ["alejandra"];
+          javascript = ["prettier"];
         };
       };
     };

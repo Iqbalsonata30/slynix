@@ -10,7 +10,6 @@
     ./tmux.nix
     ./../nixvim/default.nix
   ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "iqbalsonata";
@@ -78,7 +77,7 @@
   # Starship
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
     settings = {
       add_newline = true;
       format = "[$symbol$version]($style)[$directory]($style)[$git_branch]($style)[$git_commit]($style)[$git_state]($style)[$git_status]($style)[$line_break]($style)[$username]($style)[$hostname]($style)[$shlvl]($style)[$jobs]($style)[$time]($style)[$status]($style)[$character]($style)";

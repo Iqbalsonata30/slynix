@@ -1,11 +1,18 @@
-{ pkgs, ...}:
-
-{
-  home.packages = with pkgs; [ 
-    bat nodejs gdb
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    bat
+    nodejs
+    gdb
     lldb
     clang
+    fira-code
+    nerd-fonts.fira-code
+    fira-code-symbols
+    liberation_ttf
+    noto-fonts
+    noto-fonts-color-emoji
     file
+    proggyfonts
     teams-for-linux
     nodePackages_latest.prettier
     papirus-icon-theme
@@ -31,7 +38,7 @@
     google-cloud-sdk
     terraform
     wireshark
-    gofumpt 
+    gofumpt
     stylua
     gotools
     google-chrome
@@ -44,6 +51,7 @@
     libreoffice
     drawio
     go
+    ccls
     lld
     zls
     zig

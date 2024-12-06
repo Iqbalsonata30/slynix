@@ -21,6 +21,11 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.home-manager.follows = "home-manager";
+
+    ts-rescript = {
+      url = "github:nkrkv/tree-sitter-rescript";
+      flake = false;
+    };
   };
 
   outputs = {

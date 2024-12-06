@@ -1,13 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -19,7 +21,7 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-# Enable networking
+  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -39,12 +41,10 @@
     LC_TELEPHONE = "id_ID.UTF-8";
     LC_TIME = "id_ID.UTF-8";
   };
-  
-
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  
+
   # Enable docker daemon
   virtualisation.docker.enable = true;
 
@@ -60,7 +60,7 @@
 
   # Virtual Box
   virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "iqbalsonata" ];
+  users.extraGroups.vboxusers.members = ["iqbalsonata"];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -85,14 +85,15 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.fish.enable = true;
   users.users.iqbalsonata = {
     isNormalUser = true;
     description = "Iqbal Sonata";
-    extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" ];
+    extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
     packages = with pkgs; [
-    	gcc
-    #  thunderbird
+      gcc
+      #  thunderbird
     ];
   };
 
@@ -104,15 +105,15 @@
     pantheon-tweaks
   ];
 
-
-
- #$ nix search wget
+  #$ nix search wget
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.fish.enable = true;
 
+  fonts = {
+    fontDir.enable = true;
+  };
   # fonts.packages = with pkgs; [
   #   noto-fonts
   #   liberation_ttf
@@ -124,8 +125,6 @@
   #   proggyfonts
   #  ];
 
-
-
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
@@ -134,10 +133,10 @@
   # List services that you want to enable:
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
