@@ -4,6 +4,7 @@
     nodejs
     gdb
     lldb
+    yarn
     clang
     fira-code
     nerd-fonts.fira-code
