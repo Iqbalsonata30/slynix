@@ -15,6 +15,7 @@
     file
     proggyfonts
     teams-for-linux
+    openboard
     nodePackages_latest.prettier
     papirus-icon-theme
     sqlite
