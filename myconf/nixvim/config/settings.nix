@@ -56,12 +56,12 @@
 
     opts = {
       number = true;
-      tabstop = 2;
+      tabstop = 4;
       softtabstop = 2;
       showtabline = 2;
       expandtab = true;
       smartindent = true;
-      shiftwidth = 2;
+      shiftwidth = 4;
       mouse = "a";
       scrolloff = 12;
       breakindent = true;
