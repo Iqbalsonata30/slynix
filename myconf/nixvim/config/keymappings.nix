@@ -1,5 +1,10 @@
 {
   globals.mapleader = " ";
+  clipboard = {
+    register = "unnamedplus";
+    providers.xclip.enable = true;
+  };
+
   keymaps = [
     {
       action = ":lua vim.lsp.buf.definition()<CR>";

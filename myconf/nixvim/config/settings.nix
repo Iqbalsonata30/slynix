@@ -1,8 +1,4 @@
 {
-  clipboard = {
-    register = "unnamedplus";
-    providers.xclip.enable = true;
-  };
   config = {
     extraConfigLuaPre = ''
       vim.fn.sign_define("diagnosticsignerror", { text = " ", texthl = "diagnosticerror", linehl = "", numhl = "" })
