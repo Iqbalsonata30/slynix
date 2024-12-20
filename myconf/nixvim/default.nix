@@ -13,8 +13,8 @@
       ./plugins/git.nix
       ./plugins/dressing.nix
       ./plugins/indent-blankline.nix
-      ./plugins/floaterm.nix
       ./plugins/zig.nix
+      ./plugins/illuminate.nix
     ];
 
     enable = true;
@@ -22,5 +22,11 @@
     plugins.lualine.enable = true;
     plugins.vim-surround.enable = true;
     plugins.web-devicons.enable = true;
+
+    extraConfigLuaPre = ''
+      if vim.g.have_nerd_font then
+        require('nvim-web-devicons').setup {}
+      end
+    '';
   };
 }

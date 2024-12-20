@@ -144,17 +144,6 @@
       action = ":lua require('smart-splits').resize_right()<CR>";
       options.silent = true;
     }
-
-    # Floatterm Toggle
-    {
-      mode = "n";
-      key = "<c-t>";
-      action = ":FloatermToggle<CR>";
-      options = {
-        silent = true;
-        desc = "Terminal";
-      };
-    }
   ];
 }
 # vim.keymap.set("n", "<leader>s", ":split<CR><C-w>j", { silent = true })
