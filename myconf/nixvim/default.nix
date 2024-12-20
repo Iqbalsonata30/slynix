@@ -15,7 +15,6 @@
       ./plugins/indent-blankline.nix
       ./plugins/floaterm.nix
       ./plugins/zig.nix
-      ./plugins/harpoon.nix
     ];
 
     enable = true;
