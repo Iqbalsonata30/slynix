@@ -36,7 +36,7 @@
         plugin = open;
       }
       {
-        plugin = yank;
+        plugin = tmuxPlugins.yank;
         extraConfig =
           # tmux
           ''
