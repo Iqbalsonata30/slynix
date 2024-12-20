@@ -67,5 +67,6 @@
     htop
     glibc
     fragments
+    xclip
   ];
 }
