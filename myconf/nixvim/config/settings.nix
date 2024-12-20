@@ -1,4 +1,8 @@
 {
+  clipboard = {
+    register = "unnamedplus";
+    providers.xclip.enable = true;
+  };
   config = {
     extraConfigLuaPre = ''
       vim.fn.sign_define("diagnosticsignerror", { text = " ", texthl = "diagnosticerror", linehl = "", numhl = "" })
@@ -13,6 +17,7 @@
       softtabstop = 2;
       showtabline = 2;
       expandtab = true;
+      fileencoding = "utf-8";
       smartindent = true;
       shiftwidth = 2;
       mouse = "a";
