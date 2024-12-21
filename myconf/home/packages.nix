@@ -68,6 +68,7 @@
     htop
     glibc
     fragments
+    vite
     xclip
   ];
 }
