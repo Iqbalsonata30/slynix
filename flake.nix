@@ -26,12 +26,17 @@
       url = "github:nkrkv/tree-sitter-rescript";
       flake = false;
     };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    ghostty,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -44,6 +49,11 @@
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
         modules = [
+          {
+            environment.systemPackages = [
+              ghostty.packages.x86_64-linux.default
+            ];
+          }
           ./myconf/hosts
         ];
       };

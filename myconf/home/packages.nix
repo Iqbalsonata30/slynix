@@ -7,6 +7,7 @@
     lldb
     yarn
     clang
+    postman
     fira-code
     nerd-fonts.fira-code
     fira-code-symbols

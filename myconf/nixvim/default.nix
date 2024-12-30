@@ -15,7 +15,6 @@
       ./plugins/indent-blankline.nix
       ./plugins/zig.nix
       ./plugins/illuminate.nix
-      ./plugins/dap.nix
     ];
 
     enable = true;
