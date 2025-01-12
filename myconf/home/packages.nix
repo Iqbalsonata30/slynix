@@ -29,6 +29,7 @@
     gnumake
     gopls
     php83
+    prometheus
     sqls
     nodePackages_latest."@tailwindcss/language-server"
     nodePackages_latest."diagnostic-languageserver"
