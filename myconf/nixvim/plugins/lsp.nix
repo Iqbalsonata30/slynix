@@ -134,7 +134,7 @@
 
     trouble.enable = true;
     lsp-format.enable = true;
-    nvim-colorizer.enable = true;
+    colorizer.enable = true;
 
     cmp-nvim-lsp.enable = true;
     cmp-nvim-lsp-document-symbol.enable = true;

@@ -3,15 +3,18 @@
     bat
     nodejs
     tmuxPlugins.yank
+    ollama
     gdb
     lldb
     yarn
     clang
+    windterm
     postman
     fira-code
     nerd-fonts.fira-code
     fira-code-symbols
     liberation_ttf
+    zoom-us
     noto-fonts
     noto-fonts-color-emoji
     file
@@ -28,7 +31,6 @@
     vimPlugins.null-ls-nvim
     gnumake
     gopls
-    php83
     prometheus
     sqls
     nodePackages_latest."@tailwindcss/language-server"
@@ -45,6 +47,7 @@
     wireshark
     gofumpt
     stylua
+    ccls
     gotools
     google-chrome
     docker-compose

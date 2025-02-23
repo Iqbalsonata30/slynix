@@ -85,7 +85,6 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.fish.enable = true;
   users.users.iqbalsonata = {
     isNormalUser = true;
     description = "Iqbal Sonata";
@@ -110,6 +109,12 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
+
+  programs = {
+    fish = {
+      enable = true;
+    };
+  };
 
   fonts = {
     fontDir.enable = true;
