@@ -8,6 +8,8 @@
     lldb
     yarn
     clang
+    vscode
+    slack-cli
     windterm
     postman
     fira-code

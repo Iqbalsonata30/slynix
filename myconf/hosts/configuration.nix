@@ -57,8 +57,8 @@
   };
 
   # Virtual Box
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = ["iqbalsonata"];
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = ["iqbalsonata"];
 
   # Automatic Garbage collection
   nix.gc = {
@@ -69,8 +69,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  # services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -79,7 +80,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
