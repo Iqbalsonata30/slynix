@@ -15,6 +15,7 @@
       ./plugins/indent-blankline.nix
       ./plugins/zig.nix
       ./plugins/illuminate.nix
+      ./plugins/remote-nvim.nix
     ];
 
     enable = true;
