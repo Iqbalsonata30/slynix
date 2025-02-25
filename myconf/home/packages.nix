@@ -9,7 +9,7 @@
     yarn
     clang
     vscode
-    slack-cli
+    slack
     windterm
     postman
     fira-code
