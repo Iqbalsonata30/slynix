@@ -60,6 +60,11 @@
           autostart = true;
         };
 
+        yamlls = {
+          enable = true;
+          autostart = true;
+        };
+
         dockerls.enable = true;
         dockerls.autostart = true;
 

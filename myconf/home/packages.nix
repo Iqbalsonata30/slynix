@@ -1,11 +1,24 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     bat
+    vegeta
+    kubernetes-helm
+    multipass
+    jq
+    prometheus-node-exporter
+    kubectl
+    mongodb-compass
     nodejs
+    argocd
     tmuxPlugins.yank
+    kubernetes
+    telegram-desktop
+    k9s
+    nginx
     ollama
     gdb
     lldb
+    minikube
     yarn
     clang
     vscode

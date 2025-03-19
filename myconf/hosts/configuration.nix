@@ -15,12 +15,32 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "iqbalsonata"; # Define your hostname. networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "iqbalsonata-nixos"; # Define your hostname.
+  networking.extraHosts = "192.168.49.2 nginx.iqbalsonata.local";
+  # networking.resolvconf.enable = true;
+  # networking.firewall.allowedTCPPorts = [22 80];
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  #networking.proxy.default = "http://user:password@proxy:port/";
+  #networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nameservers = ["10.24.252.1"];
+
+  #  networking = {
+  #  interfaces.wlp1s0 = {
+  #    ipv4.addresses = [
+  #      {
+  #        address = "10.24.252.3";
+  #        prefixLength = 24;
+  #      }
+  #    ];
+  #  };
+  #  defaultGateway = {
+  #    address = "10.24.252.3";
+  #    interface = "wlp1s0";
+  #  };
+  #};
 
   # Set your time zone.
   time.timeZone = "Asia/Jakarta";
@@ -45,6 +65,11 @@
 
   # Enable docker daemon
   virtualisation.docker.enable = true;
+  virtualisation.docker.liveRestore = false;
+
+  # libvirtd
+  virtualisation.libvirtd.enable = true;
+  users.extraGroups.libvirtd.members  = ["iqbalsonata"];
 
   # Enable the Pantheon Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
@@ -57,8 +82,8 @@
   };
 
   # Virtual Box
-  #virtualisation.virtualbox.host.enable = true;
-  #users.extraGroups.vboxusers.members = ["iqbalsonata"];
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = ["iqbalsonata"];
 
   # Automatic Garbage collection
   nix.gc = {
@@ -71,21 +96,21 @@
   services.printing.enable = true;
 
   # Enable sound with pulseaudio.
-  services.pulseaudio.enable = true;
+  services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
-  #services.pipewire = {
-  #  enable = true;
-  #  alsa.enable = true;
-  #  alsa.support32Bit = true;
-  #  pulse.enable = true;
-  # If you want to use JACK applications, uncomment this
-  #  jack.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    jack.enable = true;
 
-  # use the example session manager (no others are packaged yet so this is enabled by default,
-  # no need to redefine it in your config for now)
-  # media-session.enable = true;
-  #};
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    # media-session.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -108,6 +133,7 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     pantheon-tweaks
+    xorg.libxshmfence
   ];
 
   #$ nix search wget
@@ -150,13 +176,15 @@
   services.openssh.enable = true;
 
   # Enable the Jenkins
-  services.jenkins = {
-    enable = true;
-  };
+  # services.jenkins = {
+  #   enable = true;
+  # };
 
   # Enable the nginx
   services.nginx = {
     enable = true;
+    recommendedTlsSettings = true;
+    recommendedProxySettings = true;
   };
 
   # Open ports in the firewall.
