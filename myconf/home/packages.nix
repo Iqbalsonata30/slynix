@@ -2,10 +2,14 @@
   home.packages = with pkgs; [
     bat
     vegeta
+    k6
     kubernetes-helm
-    multipass
+    vault
+    qemu
+    OVMF
     jq
     prometheus-node-exporter
+    python3Full
     kubectl
     mongodb-compass
     nodejs
