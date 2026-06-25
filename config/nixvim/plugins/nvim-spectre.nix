@@ -1,0 +1,7 @@
+{
+  plugins = {
+    spectre = {
+      enable = true;
+    };
+  };
+}
