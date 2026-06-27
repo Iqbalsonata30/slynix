@@ -1,13 +1,14 @@
 {
-  config,
   pkgs,
   ...
 }: {
   imports = [
     ./../nixvim/default.nix
-    ./tmux.nix
-    ./git.nix
+      ./tmux.nix
+      ./git.nix
   ];
+
+  # imports = [];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "iqbalsonata";

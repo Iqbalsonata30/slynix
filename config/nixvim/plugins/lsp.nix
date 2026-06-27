@@ -166,10 +166,10 @@
     colorizer.enable = true;
 
     cmp-nvim-lsp.enable = true;
-    cmp-nvim-lsp-document-symbol.enable = true;
+    # cmp-nvim-lsp-document-symbol.enable = true;
     cmp-nvim-lsp-signature-help.enable = true;
     cmp-buffer.enable = true;
-    cmp-emoji.enable = true;
+    # cmp-emoji.enable = true;
     cmp-path.enable = true;
     cmp_luasnip.enable = true;
     cmp-treesitter.enable = true;
@@ -186,7 +186,7 @@
         sources = [
           {name = "nvim_lsp";}
           {name = "nvim_lsp_signature_help";}
-          {name = "nvim_lsp_document_symbol";}
+          # {name = "nvim_lsp_document_symbol";}
           {name = "luasnip";}
           {name = "path";}
           {name = "cmp_yanky";}

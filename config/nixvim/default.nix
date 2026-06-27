@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ inputs,...}: {
   programs.nixvim = {
     imports = [
       ./config/keymappings.nix
@@ -18,6 +18,7 @@
     ];
 
     enable = true;
+    nixpkgs.source = inputs.nixpkgs;
 
     plugins.lualine.enable = true;
     plugins.vim-surround.enable = true;

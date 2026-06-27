@@ -11,7 +11,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sketchybar-app-font = {
@@ -33,12 +33,13 @@
     homeConfigurations."iqbalsonata" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
+      extraSpecialArgs = {
+        inherit inputs;
+      };
+
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
       modules = [
-        {
-          nixpkgs.config.allowUnfree = true;
-        }
         ./config/home/home.nix
         inputs.nixvim.homeModules.nixvim
       ];
