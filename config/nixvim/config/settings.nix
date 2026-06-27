@@ -28,6 +28,7 @@
       swapfile = false;
       relativenumber = true;
       cmdheight = 1;
+      hlsearch = false;
       completeopt = "menuone,noinsert";
       showmode = false;
       incsearch = true;
