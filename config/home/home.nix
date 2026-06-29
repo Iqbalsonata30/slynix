@@ -48,6 +48,7 @@
     pkgs.opencode
     pkgs.rtk
     pkgs.ripgrep
+    pkgs.uv
     pkgs.vimPlugins.nvim-web-devicons
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
