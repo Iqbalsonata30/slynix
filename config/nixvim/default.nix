@@ -24,6 +24,7 @@
     plugins.vim-surround.enable = true;
     plugins.web-devicons.enable = true;
     plugins.trouble.enable = true;
+    plugins.typescript-tools.enable = true;
 
     extraConfigLua = ''
       local harpoon = require("harpoon")

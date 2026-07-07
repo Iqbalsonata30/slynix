@@ -34,6 +34,11 @@
         #   };
         # };
 
+        svelte = {
+          enable = true;
+          autostart = true;
+        };
+
         marksman = {
           enable = true;
           autostart = true;
@@ -234,6 +239,9 @@
 
     none-ls = {
       enable = true;
+      settings = {
+        diagnostics_format = "[#{c}] #{m} (#{s})";
+      };
       sources = {
         code_actions = {
           gitsigns.enable = true;
@@ -258,11 +266,12 @@
           css = ["prettier"];
           html = ["prettier"];
           json = ["prettier"];
-          just = ["just"];
           lua = ["stylua"];
           markdown = ["prettier"];
           nix = ["alejandra"];
           javascript = ["prettier"];
+          typescript = [ "prettier" ];
+          svelte = [ "prettier" ];
         };
       };
     };
