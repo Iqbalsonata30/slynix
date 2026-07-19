@@ -13,7 +13,35 @@
   # manage.
   home.username = "iqbalsonata";
   home.homeDirectory = "/home/iqbalsonata";
+  
+   systemd.user.services.housekeeping-nix = {
+    Unit = {
+      Description = "Run nix-collect-garbage";
+    };
 
+    Service = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "housekeeping-nix" ''
+        ${pkgs.nix}/bin/nix-collect-garbage -d
+        ${pkgs.nix}/bin/nix store optimise
+        '';
+    };
+  };
+
+  systemd.user.timers.housekeeping-nix = {
+    Unit = {
+      Description = "Weekly Nix garbage collection";
+    };
+
+    Timer = {
+      OnCalendar = "weekly";
+      Persistent = true;
+    };
+
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
+  };
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -22,6 +50,14 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
+
+  home.pointerCursor = {
+    enable = true;
+
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 24;
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -53,6 +89,9 @@
     pkgs.bun
     pkgs.typescript
     pkgs.typescript-language-server
+    pkgs.nodejs
+    # pkgs.rust-analyzer
+    # pkgs.gopls
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
