@@ -82,6 +82,7 @@
     pkgs.mc
     pkgs.go
     pkgs.opencode
+    pkgs.kiro-cli
     pkgs.rtk
     pkgs.ripgrep
     pkgs.uv
