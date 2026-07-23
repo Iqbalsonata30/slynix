@@ -91,6 +91,7 @@
     pkgs.typescript
     pkgs.typescript-language-server
     pkgs.nodejs
+    pkgs.yaml-language-server
     # pkgs.rust-analyzer
     # pkgs.gopls
 
