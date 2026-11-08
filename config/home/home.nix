@@ -6,7 +6,14 @@
     ./../nixvim/default.nix
       ./tmux.nix
       ./git.nix
+      ./slyvest.nix
   ];
+
+  services.slyvest = {
+    enable = true;
+    journal = "/home/iqbalsonata/Programming/slyvest/data/journal.sqlite";
+    # Read-only and dynamic port by default. Authoring/backups are separate opt-ins.
+  };
 
   # imports = [];
   # Home Manager needs a bit of information about you and the paths it should
