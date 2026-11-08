@@ -12,7 +12,7 @@
   services.slyvest = {
     enable = true;
     journal = "/home/iqbalsonata/Programming/slyvest/data/journal.sqlite";
-    # Read-only and dynamic port by default. Authoring/backups are separate opt-ins.
+    enableAuthoring = true; # Explicit user opt-in; backups remain disabled.
   };
 
   # imports = [];

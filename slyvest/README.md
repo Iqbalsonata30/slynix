@@ -13,10 +13,15 @@ services.slyvest = {
   enable = true;
   journal = "/home/iqbalsonata/Programming/slyvest/data/journal.sqlite";
   # port = 0;                  # default: loopback dengan port dinamis
-  # enableAuthoring = true;    # opt-in; default false
+  enableAuthoring = true;      # pilihan eksplisit host; default module tetap false
   # backupDirectory = "/path/yang/sudah/ada"; # opt-in terpisah
 };
 ```
+
+Mode penulisan pada host ini diaktifkan atas permintaan pengguna. Izin backup tetap
+nonaktif; mode default module tetap read-only. Untuk kembali read-only, atur
+`enableAuthoring = false` lalu apply Home Manager. Apply me-restart service dan
+menghasilkan URL sesi baru.
 
 Path jurnal dikonfirmasi pengguna. Service tidak melakukan init, migrasi, pergantian
 jurnal, atau fallback. Direktori backup harus sudah ada. Binary dijalankan langsung,
