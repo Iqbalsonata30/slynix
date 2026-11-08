@@ -21,7 +21,7 @@
   home.username = "iqbalsonata";
   home.homeDirectory = "/home/iqbalsonata";
   
-   systemd.user.services.housekeeping-nix = {
+  systemd.user.services.housekeeping-nix = {
     Unit = {
       Description = "Run nix-collect-garbage";
     };
@@ -29,7 +29,7 @@
     Service = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "housekeeping-nix" ''
-        ${pkgs.nix}/bin/nix-collect-garbage -d
+        ${pkgs.nix}/bin/nix-collect-garbage --delete-older-than 14d
         ${pkgs.nix}/bin/nix store optimise
         '';
     };
