@@ -6,7 +6,14 @@
     ./../nixvim/default.nix
       ./tmux.nix
       ./git.nix
+      ./slyvest.nix
   ];
+
+  services.slyvest = {
+    enable = true;
+    journal = "/home/iqbalsonata/Programming/slyvest/data/journal.sqlite";
+    enableAuthoring = true; # Explicit user opt-in; backups remain disabled.
+  };
 
   # imports = [];
   # Home Manager needs a bit of information about you and the paths it should
